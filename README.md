@@ -1,2 +1,2 @@
-# Eyes-free
+# eyes-free
 HCI Project 1
