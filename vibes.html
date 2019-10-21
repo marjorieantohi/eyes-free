@@ -68,34 +68,43 @@
     // Used to choose a random pattern
     var randomNumber = getRandomInt(0, 6);
 
+    // Used to calculate when to show emojis
+    var timeTillDone;
+
     // Choose the pattern, note which pattern was played
     switch(randomNumber) {
       case 0:
         emotionalAngryEmoji();
         globalEmojiShown = "angry";
+        timeTillDone = 2300;
         break;
       case 1:
         emotionalSadEmoji();
         globalEmojiShown = "sad";
+        timeTillDone = 1500;
         break;
       case 2:
         emotionalLikeEmoji();
         globalEmojiShown = "like";
+        timeTillDone = 250;
         break;
       case 3:
         emotionalHahaEmoji();
         globalEmojiShown = "haha";
+        timeTillDone = 2000;
         break;
       case 4:
         emotionalHeartEmoji();
         globalEmojiShown = "heart";
+        timeTillDone = 900;
         break;
       case 5:
         emotionalWowEmoji();
         globalEmojiShown = "wow";
+        timeTillDone = 1000;
         break;
     }
-    setTimeout(showEmojiClass,750);
+    setTimeout(showEmojiClass,timeTillDone + 250);
   }
 
   function choseLike() {
