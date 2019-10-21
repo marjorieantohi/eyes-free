@@ -2,26 +2,25 @@
 // to the emojis that they represent. These are subjective.
 
 function emotionalAngryEmoji() {
-  console.log("Playing Angry Emoji");
-  navigator.vibrate([250, 100, 250, 100, 250, 100, 250, 100, 250, 100, 250]);
+  navigator.vibrate([500, 100, 500, 100, 500, 100, 500]);
 }
 
 function emotionalSadEmoji() {
-
+  navigator.vibrate([500, 500, 500]);
 }
 
 function emotionalHeartEmoji() {
-
+  navigator.vibrate([50, 50, 100, 100, 50, 50, 100, 100, 50, 50, 100, 100]);
 }
 
 function emotionalLikeEmoji() {
-
+  navigator.vibrate(250);
 }
 
-function emotionalLaughEmoji() {
-
+function emotionalHahaEmoji() {
+    navigator.vibrate([250, 100, 250, 100, 250, 100, 250, 100, 250, 100, 250]);
 }
 
-function emotionalEmoji() {
-
+function emotionalWowEmoji() {
+  navigator.vibrate(1000);
 }
