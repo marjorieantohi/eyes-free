@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Get a reference to an element
   var square = document.querySelector('.square');
-  console.log(square);
 
   // Create a manager to manage the element
   var manager = new Hammer.Manager(square);
