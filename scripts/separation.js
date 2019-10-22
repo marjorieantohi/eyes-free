@@ -15,9 +15,9 @@
   }
 
   function hideGestureSquaresClass() {
-    document.getElementsByClassName('gestureSpace')[0].style.visibility = 'hidden';
+    document.getElementsByClassName('gestureSquares')[0].style.visibility = 'hidden';
   }
 
   function showGestureSquaresClass() {
-    document.getElementsByClassName('gestureSpace')[0].style.visibility = '';
+    document.getElementsByClassName('gestureSquares')[0].style.visibility = '';
   }
