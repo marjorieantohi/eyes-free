@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
     event: 'sad',
     direction: Hammer.DIRECTION_DOWN
   })
+  var Angry = new Hammer.Pan({
+    event: 'angry',
+    direction: HAMMER.DIRECTION_HORIZONTAL
+  })
 
   // Add recognizers to the manager
   manager.add([Like, Heart, Wow, Haha, Sad]);
@@ -35,10 +39,12 @@ document.addEventListener('DOMContentLoaded', function() {
   manager.get('haha').recognizeWith('heart');
   manager.get('heart').requireFailure('haha');
 
-  manager.on('like heart wow haha sad pressup', function(e) {
+  manager.on('like heart wow haha sad', function(e) {
     e.target.classList.toggle('expand');
     console.log(e.type);
   });
+
+  //if pan left and then pan right, angry. if pan right then pan left, angry.
 
   // var AngryMan = new Hammer.Manager(square);
   // AngryMan.add(new Hammer.Swip({direction: Hammer.DIRECTION_LEFT}));
