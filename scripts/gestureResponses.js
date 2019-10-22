@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
   })
   var Angry = new Hammer.Pan({
     event: 'angry',
-    direction: HAMMER.DIRECTION_HORIZONTAL
+    direction: Hammer.DIRECTION_HORIZONTAL
   })
 
   // Add recognizers to the manager
