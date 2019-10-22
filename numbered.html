@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="scripts/numberedVibrations.js"></script>
   <script src="scripts/random.js"></script>
+  <script src="scripts/separation.js"></script>
 </head>
 
 <script type="text/javascript">
@@ -43,21 +44,20 @@
   }
 
   function hideEmojiClass() {
-    globalTime = new Date().getTime() - start;
+    globalTime = new Date().getTime() - startTime;
     document.getElementsByClassName('showEmojis')[0].style.visibility = 'hidden';
   }
 
   function showEmojiClass() {
-    start = new Date().getTime();
+    startTime = new Date().getTime();
     document.getElementsByClassName('showEmojis')[0].style.visibility = '';
   }
 
-  function hideVibrationClass() {
-    document.getElementsByClassName('beginVibration')[0].style.visibility = 'hidden';
-  }
 
-  function showVibrationClass() {
-    document.getElementsByClassName('beginVibration')[0].style.visibility = '';
+  function gestureSpace() {
+    hideGestureClass();
+    showGestureSquaresClass();
+
   }
 
   function playRandomPattern() {
@@ -74,33 +74,33 @@
     // Choose the pattern, note which pattern was played
     switch(randomNumber) {
       case 0:
-        emotionalLikeEmoji();
-        globalEmojiShown = "angry";
+        likeEmoji();
+        globalEmojiShown = "like";
         timeTillDone = 250;
         break;
       case 1:
-        emotionalLoveEmoji();
-        globalEmojiShown = "sad";
+        loveEmoji();
+        globalEmojiShown = "love";
         timeTillDone = 750;
         break;
       case 2:
-        emotionalHahaEmoji();
-        globalEmojiShown = "like";
+        hahaEmoji();
+        globalEmojiShown = "haha";
         timeTillDone = 1250;
         break;
       case 3:
-        emotionalWowEmoji();
-        globalEmojiShown = "haha";
+        wowEmoji();
+        globalEmojiShown = "wow";
         timeTillDone = 1750;
         break;
       case 4:
-        emotionalSadEmoji();
-        globalEmojiShown = "heart";
+        sadEmoji();
+        globalEmojiShown = "sad";
         timeTillDone = 2250;
         break;
       case 5:
-        emotionalAngryEmoji();
-        globalEmojiShown = "wow";
+        angryEmoji();
+        globalEmojiShown = "angry";
         timeTillDone = 2750;
         break;
     }
@@ -118,7 +118,7 @@
   }
 
   function choseHeart() {
-    globalEmojiChosen = "heart";
+    globalEmojiChosen = "love";
     addRowContainer();
   }
 
@@ -143,6 +143,35 @@
     showVibrationClass();
   }
 
+ function choseGestureLike() {
+    globalEmojiChosen = "like";
+    showEmojiClass();
+  }
+
+  function choseGestureHaha() {
+    globalEmojiChosen = "haha";
+    showEmojiClass();
+  }
+
+  function choseGestureHeart() {
+    globalEmojiChosen = "love";
+    showEmojiClass();
+  }
+
+  function choseGestureWow() {
+    globalEmojiChosen = "wow";
+    showEmojiClass();
+  }
+
+  function choseGestureSad() {
+    globalEmojiChosen = "sad";
+    showEmojiClass();
+  }
+
+  function choseGestureAngry() {
+    globalEmojiChosen = "angry";
+    showEmojiClass();
+  }
 
 </script>
 
@@ -153,6 +182,11 @@
     </div>
   </div>
 
+  <div class="beginGesture">
+    <div class="center-center">
+     <button onclick="playRandomPattern()" class="button">Send Message!</button>
+    </div>
+  </div>
 
   <div class="showEmojis">
     <div class="Header">
@@ -179,6 +213,33 @@
       </div>
       <div class="showEmojisColumn">
         <img onclick="choseWow()" src="images/wow.png" alt="like" style="width:100%">
+      </div>
+    </div>
+  </div>
+
+  <div class="gestureSquares" style="max-height: 100%">
+  <div class="gestureSquaresRow">
+      <div class="gestureSquaresColumn">
+        <img onclick="choseGestureLike()" src="images/like.png" alt="like" style="width:50vw">
+      </div>
+      <div class="gestureSquaresColumn">
+        <img onclick="choseGestureHeart()" src="images/heart.png" alt="like" style="width:50vw">
+      </div>
+    </div>
+      <div class="gestureSquaresRow">
+      <div class="gestureSquaresColumn">
+        <img onclick="choseGestureHaha()" src="images/like.png" alt="like" style="width:50vw">
+      </div>
+      <div class="gestureSquaresColumn">
+        <img onclick="choseGestureWow()" src="images/heart.png" alt="like" style="width:50vw">
+      </div>
+    </div>
+      <div class="gestureSquaresRow">
+      <div class="gestureSquaresColumn">
+        <img onclick="choseGestureSad()" src="images/like.png" alt="like" style="width:50vw">
+      </div>
+      <div class="gestureSquaresColumn">
+        <img onclick="choseGestureAngry()" src="images/heart.png" alt="like" style="width:50vw">
       </div>
     </div>
   </div>

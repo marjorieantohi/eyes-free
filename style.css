@@ -39,6 +39,25 @@ body {
   display: table;
 }
 
+.gestureSquaresRow::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.gestureSquaresColumn {
+  float: left;
+  width: 50%;
+}
+
+.gestureSquares {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+
 /* https://www.w3schools.com/css/css3_buttons.asp */
 .button {
   background-color: #008CBA;
