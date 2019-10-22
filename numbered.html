@@ -24,7 +24,7 @@
   function addRow(name, emojiShown, emojiChosen, totalTime) {
 
     // Get our table
-    var table = document.getElementById("emoVibesTable");
+    var table = document.getElementById("numberedVibrationsTable");
 
     // Make our row
     var row = table.insertRow(-1);
@@ -74,34 +74,34 @@
     // Choose the pattern, note which pattern was played
     switch(randomNumber) {
       case 0:
-        emotionalAngryEmoji();
-        globalEmojiShown = "angry";
-        timeTillDone = 2300;
-        break;
-      case 1:
-        emotionalSadEmoji();
-        globalEmojiShown = "sad";
-        timeTillDone = 1500;
-        break;
-      case 2:
         emotionalLikeEmoji();
-        globalEmojiShown = "like";
+        globalEmojiShown = "angry";
         timeTillDone = 250;
         break;
-      case 3:
+      case 1:
+        emotionalLoveEmoji();
+        globalEmojiShown = "sad";
+        timeTillDone = 750;
+        break;
+      case 2:
         emotionalHahaEmoji();
+        globalEmojiShown = "like";
+        timeTillDone = 1250;
+        break;
+      case 3:
+        emotionalWowEmoji();
         globalEmojiShown = "haha";
-        timeTillDone = 2000;
+        timeTillDone = 1750;
         break;
       case 4:
-        emotionalHeartEmoji();
+        emotionalSadEmoji();
         globalEmojiShown = "heart";
-        timeTillDone = 900;
+        timeTillDone = 2250;
         break;
       case 5:
-        emotionalWowEmoji();
+        emotionalAngryEmoji();
         globalEmojiShown = "wow";
-        timeTillDone = 1000;
+        timeTillDone = 2750;
         break;
     }
     setTimeout(showEmojiClass,timeTillDone + 250);
@@ -182,7 +182,7 @@
       </div>
     </div>
   </div>
-  <table id="emoVibesTable">
+  <table id="numberedVibrationsTable">
     <tr>
       <th>Participant</th>
       <th>Emoji Shown</th>

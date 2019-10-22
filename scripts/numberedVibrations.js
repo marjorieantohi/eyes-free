@@ -22,22 +22,22 @@ function likeEmoji() {
 }
 
 function loveEmoji() {
-    navigator.vibrate([250, 100, 250])
+    navigator.vibrate([250, 250, 250])
 }
 
 function hahaEmoji() {
-    navigator.vibrate([250, 100, 250, 100, 250])
+    navigator.vibrate([250, 250, 250, 250, 250])
 }
 
 function wowEmoji() {
-    navigator.vibrate([250, 100, 250, 100, 250, 100, 250])
+    navigator.vibrate([250, 250, 250, 250, 250, 250, 250])
 }
 
 function sadEmoji() {
-    navigator.vibrate([250, 100, 250, 100, 250, 100, 250, 100, 250])
+    navigator.vibrate([250, 250, 250, 250, 250, 250, 250, 250, 250])
 }
 
 function angryEmoji() {
-    navigator.vibrate([250, 100, 250, 100, 250, 100, 250, 100, 250, 100, 250])
+    navigator.vibrate([250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250])
 }
 
