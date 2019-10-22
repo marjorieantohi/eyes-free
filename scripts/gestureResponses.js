@@ -33,27 +33,17 @@ document.addEventListener('DOMContentLoaded', function() {
   })
 
   // Add recognizers to the manager
-  manager.add([Like, Heart, Wow, Haha, Sad]);
+  manager.add([Like, Heart, Wow, Haha, Sad, Angry]);
 
   // register as 'heart' only if 'haha' fails
   manager.get('haha').recognizeWith('heart');
   manager.get('heart').requireFailure('haha');
 
-  manager.on('like heart wow haha sad', function(e) {
+  manager.on('like heart wow haha sad angry', function(e) {
     e.target.classList.toggle('expand');
     console.log(e.type);
   });
 
-  //if pan left and then pan right, angry. if pan right then pan left, angry.
-
-  // var AngryMan = new Hammer.Manager(square);
-  // AngryMan.add(new Hammer.Swip({direction: Hammer.DIRECTION_LEFT}));
-  // AngryMan.add(new Hammer.Swip({direction: Hammer.DIRECTION_RIGHT}));
-  // AngryMan.add(new Hammer.Swip({direction: Hammer.DIRECTION_LEFT}));
-
-  // AngryMan.on('', function(e) {
-  //   console.log(e.type);
-  // });
 
   // var angryRecognizer = new AttrRecognizer()
   // print(angryRecognizer)
