@@ -31,3 +31,48 @@ function export_table_to_csv(html, filename) {
     // Download CSV
     download_csv(csv.join("%0d%0a"), filename);
 }
+
+function exportToCsv() {
+  export_table_to_csv(document.getElementById("numberedVibrationsTable"), "/csv/table" + getRandomInt(0, 1000) + ".csv");
+}
+
+// Adds a row to the table.
+function addRow(name, emojiShown, emojiChosen, totalTime) {
+
+  // Get our table
+  var table = document.getElementById("numberedVibrationsTable");
+
+  // Make our row
+  var row = table.insertRow(-1);
+
+  // Make our cells
+  var nameCell = row.insertCell(0);
+  var emojiShownCell = row.insertCell(1);
+  var emojiChosenCell = row.insertCell(2);
+  var totalTimeCell = row.insertCell(3);
+
+  // Assign the values
+  nameCell.innerHTML = name;
+  emojiShownCell.innerHTML = emojiShown;
+  emojiChosenCell.innerHTML = emojiChosen;
+  totalTimeCell.innerHTML = totalTime;
+}
+
+function addRowContainer() {
+  hideClass('showEmojis');
+  if (counter < 22) {
+    if (counter % 2 == 0) {
+      globalName = "SENT";
+      showClass('beginVibration');
+    } else {
+      globalName = "RECEIVED";
+      showClass('beginGesture');
+    }
+    addRow(globalName, globalEmojiShown, globalEmojiChosen, globalTime);
+    counter++;
+  } else {
+    hideAll();
+    hideClass('beginVibration');
+    showClass('exportToCsv');
+  }
+}

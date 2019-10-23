@@ -5,257 +5,39 @@
 
 <head>
   <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="scripts/globals.js"></script>
   <script src="scripts/numberedVibrations.js"></script>
   <script src="scripts/random.js"></script>
   <script src="scripts/csv.js"></script>
+  <script src="scripts/emojiChoosing.js"></script>
   <script src="scripts/separation.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
-
-<script type="text/javascript">
-
-// Globals to add the data later
-var globalName = "Test";
-var globalEmojiShown = "Test";
-var globalEmojiChosen = "Test";
-var globalTime = 0;
-var counter = 1;
-
-// Globals to keep track of time
-var startTime;
-
-// Adds a row to the table.
-function addRow(name, emojiShown, emojiChosen, totalTime) {
-
-  // Get our table
-  var table = document.getElementById("numberedVibrationsTable");
-
-  // Make our row
-  var row = table.insertRow(-1);
-
-  // Make our cells
-  var nameCell = row.insertCell(0);
-  var emojiShownCell = row.insertCell(1);
-  var emojiChosenCell = row.insertCell(2);
-  var totalTimeCell = row.insertCell(3);
-
-  // Assign the values
-  nameCell.innerHTML = name;
-  emojiShownCell.innerHTML = emojiShown;
-  emojiChosenCell.innerHTML = emojiChosen;
-  totalTimeCell.innerHTML = totalTime;
-}
-
-function hideEmojiClass() {
-  globalTime = new Date().getTime() - startTime;
-  document.getElementsByClassName('showEmojis')[0].style.visibility = 'hidden';
-}
-
-function showEmojiClass() {
-  randomizeEmojis();
-  startTime = new Date().getTime();
-  document.getElementsByClassName('showEmojis')[0].style.visibility = '';
-}
-
-function hideCsvClass() {
-  document.getElementsByClassName('exportCsv')[0].style.visibility = 'hidden';
-}
-
-function showCsvClass() {
-  startTime = new Date().getTime();
-  document.getElementsByClassName('exportCsv')[0].style.visibility = '';
-}
-
-
-function gestureSpace() {
-  hideGestureClass();
-  showGestureSquaresClass();
-
-}
-
-function playRandomPattern() {
-
-  // Hide the button to play a vibration
-  hideVibrationClass();
-
-  // Used to choose a random pattern
-  var randomNumber = getRandomInt(0, 6);
-
-  // Used to calculate when to show emojis
-  var timeTillDone;
-
-  // Choose the pattern, note which pattern was played
-  switch(randomNumber) {
-    case 0:
-    likeEmoji();
-    globalEmojiShown = "like";
-    timeTillDone = 250;
-    break;
-    case 1:
-    loveEmoji();
-    globalEmojiShown = "love";
-    timeTillDone = 750;
-    break;
-    case 2:
-    hahaEmoji();
-    globalEmojiShown = "haha";
-    timeTillDone = 1250;
-    break;
-    case 3:
-    wowEmoji();
-    globalEmojiShown = "wow";
-    timeTillDone = 1750;
-    break;
-    case 4:
-    sadEmoji();
-    globalEmojiShown = "sad";
-    timeTillDone = 2250;
-    break;
-    case 5:
-    angryEmoji();
-    globalEmojiShown = "angry";
-    timeTillDone = 2750;
-    break;
-  }
-  setTimeout(showEmojiClass,timeTillDone + 250);
-}
-
-function choseLike() {
-  globalEmojiChosen = "like";
-  addRowContainer();
-}
-
-function choseHaha() {
-  globalEmojiChosen = "haha";
-  addRowContainer();
-}
-
-function choseHeart() {
-  globalEmojiChosen = "love";
-  addRowContainer();
-}
-
-function choseWow() {
-  globalEmojiChosen = "wow";
-  addRowContainer();
-}
-
-function choseSad() {
-  globalEmojiChosen = "sad";
-  addRowContainer();
-}
-
-function choseAngry() {
-  globalEmojiChosen = "angry";
-  addRowContainer();
-}
-
-function exportToCsv() {
-  export_table_to_csv(document.getElementById("numberedVibrationsTable"), "/csv/table" + getRandomInt(0, 1000) + ".csv");
-}
-
-function addRowContainer() {
-  hideEmojiClass();
-  if (counter < 3) {
-    if (counter % 2 == 0) {
-      globalName = "SENT";
-      showVibrationClass();
-    } else {
-      globalName = "RECEIVED";
-      showGestureClass();
-    }
-    addRow(globalName, globalEmojiShown, globalEmojiChosen, globalTime);
-    counter++;
-  } else {
-    hideAll();
-    hideVibrationClass();
-    showCsvClass();
-  }
-}
-
-function choseGestureLike() {
-  likeEmoji();
-  globalEmojiShown = "like";
-  hideGestureSquaresClass();
-  setTimeout(showEmojiClass,250);
-}
-
-function choseGestureHaha() {
-  likeEmoji();
-  globalEmojiShown = "haha";
-  hideGestureSquaresClass();
-  setTimeout(showEmojiClass,250);
-}
-
-function choseGestureHeart() {
-  likeEmoji();
-  globalEmojiShown = "love";
-  hideGestureSquaresClass();
-  setTimeout(showEmojiClass,250);
-}
-
-function choseGestureWow() {
-  likeEmoji();
-  globalEmojiShown = "wow";
-  hideGestureSquaresClass();
-  setTimeout(showEmojiClass,250);
-}
-
-function choseGestureSad() {
-  likeEmoji();
-  globalEmojiShown = "sad";
-  hideGestureSquaresClass();
-  setTimeout(showEmojiClass,250);
-}
-
-function choseGestureAngry() {
-  likeEmoji();
-  globalEmojiShown = "angry";
-  hideGestureSquaresClass();
-  setTimeout(showEmojiClass,250);
-}
-
-function hideAll() {
-  hideEmojiClass();
-  hideGestureClass();
-  hideGestureSquaresClass();
-  hideCsvClass();
-}
-
-</script>
-
-<script>
-function randomizeEmojis() {
-$(".showEmojisRows").html($(".showEmojisRows .showEmojisColumn").sort(function(){
-    return Math.random()-0.5;
-}));
-}
-</script>
 
 <body onload="hideAll()">
   <div class="gestureSquares" style="height: 100vh">
     <div class="gestureSquaresRow">
       <div class="gestureSquaresColumn">
-        <img onclick="choseGestureLike()" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
+        <img onclick="choseGesture('like')" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
       </div>
       <div class="gestureSquaresColumn">
-        <img onclick="choseGestureHeart()" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
-      </div>
-    </div>
-    <div class="gestureSquaresRow">
-      <div class="gestureSquaresColumn">
-        <img onclick="choseGestureHaha()" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
-      </div>
-      <div class="gestureSquaresColumn">
-        <img onclick="choseGestureWow()" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
+        <img onclick="choseGesture('love')" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
       </div>
     </div>
     <div class="gestureSquaresRow">
       <div class="gestureSquaresColumn">
-        <img onclick="choseGestureSad()" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
+        <img onclick="choseGesture('haha')" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
       </div>
       <div class="gestureSquaresColumn">
-        <img onclick="choseGestureAngry()" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
+        <img onclick="choseGesture('wow')" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
+      </div>
+    </div>
+    <div class="gestureSquaresRow">
+      <div class="gestureSquaresColumn">
+        <img onclick="choseGesture('sad')" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
+      </div>
+      <div class="gestureSquaresColumn">
+        <img onclick="choseGesture('angry')" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
       </div>
     </div>
   </div>
@@ -277,22 +59,22 @@ $(".showEmojisRows").html($(".showEmojisRows .showEmojisColumn").sort(function()
       </div>
         <div class="showEmojisRows">
         <div class="showEmojisColumn">
-          <img onclick="choseLike()" src="images/like.png" alt="like" style="width:100%;height:20vh;">
+          <img onclick="chose('like')" src="images/like.png" alt="like" style="width:100%;height:20vh;">
         </div>
         <div class="showEmojisColumn">
-          <img onclick="choseHeart()" src="images/heart.png" alt="like" style="width:100%;height:20vh;">
+          <img onclick="chose('love')" src="images/heart.png" alt="like" style="width:100%;height:20vh;">
         </div>
         <div class="showEmojisColumn">
-          <img onclick="choseHaha()" src="images/haha.png" alt="like" style="width:100%;height:20vh;">
+          <img onclick="chose('haha')" src="images/haha.png" alt="like" style="width:100%;height:20vh;">
         </div>
         <div class="showEmojisColumn">
-          <img onclick="choseSad()" src="images/sad.png" alt="like" style="width:100%;height:20vh;">
+          <img onclick="chose('sad')" src="images/sad.png" alt="like" style="width:100%;height:20vh;">
         </div>
         <div class="showEmojisColumn">
-          <img onclick="choseAngry()" src="images/angry.png" alt="like" style="width:100%;height:20vh;">
+          <img onclick="chose('angry')" src="images/angry.png" alt="like" style="width:100%;height:20vh;">
         </div>
         <div class="showEmojisColumn">
-          <img onclick="choseWow()" src="images/wow.png" alt="like" style="width:100%;height:20vh;">
+          <img onclick="chose('wow')" src="images/wow.png" alt="like" style="width:100%;height:20vh;">
         </div>
     </div>
     </div>

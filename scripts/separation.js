@@ -1,23 +1,26 @@
-  function hideVibrationClass() {
-    document.getElementsByClassName('beginVibration')[0].style.visibility = 'hidden';
-  }
+function hideClass(className) {
+    if (className == 'showEmojis') {
+      globalTime = new Date().getTime() - startTime;
+    }
+    document.getElementsByClassName(className)[0].style.visibility = 'hidden';
+}
 
-  function showVibrationClass() {
-    document.getElementsByClassName('beginVibration')[0].style.visibility = '';
+function showClass(className) {
+  if (className == 'showEmojis') {
+    startTime = new Date().getTime();
+    randomizeEmojis();
   }
+  document.getElementsByClassName(className)[0].style.visibility = '';
+}
 
-  function hideGestureClass() {
-    document.getElementsByClassName('beginGesture')[0].style.visibility = 'hidden';
-  }
+function hideAll() {
+  hideClass('showEmojis');
+  hideClass('beginGesture');
+  hideClass('gestureSquares');
+  hideClass('exportCsv');
+}
 
-  function showGestureClass() {
-    document.getElementsByClassName('beginGesture')[0].style.visibility = '';
-  }
-
-  function hideGestureSquaresClass() {
-    document.getElementsByClassName('gestureSquares')[0].style.visibility = 'hidden';
-  }
-
-  function showGestureSquaresClass() {
-    document.getElementsByClassName('gestureSquares')[0].style.visibility = '';
-  }
+function gestureSpace() {
+  hideClass('beginGesture');
+  showClass('gestureSquares');
+}
