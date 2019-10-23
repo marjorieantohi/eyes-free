@@ -39,13 +39,15 @@ document.addEventListener('DOMContentLoaded', function() {
   manager.get('haha').recognizeWith('heart');
   manager.get('heart').requireFailure('haha');
 
+  // trigger the manager for an event
   manager.on('like heart wow haha sad angry', function(e) {
     e.target.classList.toggle('expand');
     console.log(e.type);
+
+    // vibrate as confirmation
+    navigator.vibrate(500);
+
   });
 
-
-  // var angryRecognizer = new AttrRecognizer()
-  // print(angryRecognizer)
 
 }, false);
