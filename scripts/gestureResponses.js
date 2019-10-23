@@ -1,8 +1,5 @@
 // javascript for gesture responses
 
-//function 
-
-
 // We have to include this to make sure that the content has loaded!
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -32,9 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
     event: 'sad',
     direction: Hammer.DIRECTION_DOWN
   });
-  var Angry = new Hammer.Pan({
+  var Angry = new Hammer.Swipe({
     event: 'angry',
-    direction: Hammer.DIRECTION_HORIZONTAL
+    direction: Hammer.DIRECTION_RIGHT
   });
 
   // Add recognizers to the manager
@@ -49,12 +46,12 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(e.type);
 
     // vibrate as confirmation
-    //navigator.vibrate(500);
+    navigator.vibrate(500);
     console.log('vibrate done')
 
     // display result
     var result = document.querySelector('.p');
-    setTimeout(function(){ result.innerHTML = e.type;}, 500);
+    setTimeout(function(){ result.innerHTML = e.type;}, 250);
 
   });
 
