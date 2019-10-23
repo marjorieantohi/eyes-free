@@ -177,12 +177,14 @@
 
   function addRowContainer() {
     hideEmojiClass();
-    addRow(globalName, globalEmojiShown, globalEmojiChosen, globalTime);
     if (counter % 2 == 0) {
+      globalName = "SENT";
       showVibrationClass();
     } else {
+      globalName = "RECEIVED";
       showGestureClass();
     }
+    addRow(globalName, globalEmojiShown, globalEmojiChosen, globalTime);
     counter++;
   }
 
@@ -276,7 +278,7 @@
   </div>
   <table id="emoVibesTable">
     <tr>
-      <th>Participant</th>
+      <th>R/S</th>
       <th>Emoji Shown</th>
       <th>Emoji Chosen</th>
       <th>Time to Send</th>
