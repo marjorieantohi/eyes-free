@@ -5,7 +5,7 @@ function download_csv(csv, filename) {
     // CSV FILE
     csvFile = new Blob([csv], {type: "text/csv"});
 
-    var link = "mailto:fonseca@uchicago.edu?subject=CSV&body=" + csv;
+    var link = "mailto:fonseca@uchicago.edu,aprilwang@uchicago.edu,mantohi@uchicago.edu?subject=CSV&body=" + csv;
 
     // This action should open the default email app:
     window.location.href = link;
