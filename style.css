@@ -82,6 +82,8 @@ table {
 .button {
   position: absolute;
   top: 1em;
+  left: 20vw;
+  align-self:center;
   background-color: #008CBA;
   border: none;
   color: white;
