@@ -5,7 +5,13 @@ function download_csv(csv, filename) {
     // CSV FILE
     csvFile = new Blob([csv], {type: "text/csv"});
 
-    saveAs(csvFile, filename);
+    var link = "mailto:fonseca@uchicago.edu,aprilwang@uchicago.edu,mantohi@uchicago.edu?subject=CSV&body=" + csv;
+
+    // This action should open the default email app:
+    window.location.href = link;
+
+    // , and if that doesn't work, try this instead:
+    window.open(link);
 
 }
 
