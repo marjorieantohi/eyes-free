@@ -9,6 +9,7 @@
   <script src="scripts/random.js"></script>
   <script src="scripts/csv.js"></script>
   <script src="scripts/separation.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 
 <script type="text/javascript">
@@ -51,6 +52,7 @@ function hideEmojiClass() {
 }
 
 function showEmojiClass() {
+  randomizeEmojis();
   startTime = new Date().getTime();
   document.getElementsByClassName('showEmojis')[0].style.visibility = '';
 }
@@ -154,7 +156,7 @@ function exportToCsv() {
 
 function addRowContainer() {
   hideEmojiClass();
-  if (counter < 22) {
+  if (counter < 3) {
     if (counter % 2 == 0) {
       globalName = "SENT";
       showVibrationClass();
@@ -222,6 +224,14 @@ function hideAll() {
 
 </script>
 
+<script>
+function randomizeEmojis() {
+$(".showEmojisRows").html($(".showEmojisRows .showEmojisColumn").sort(function(){
+    return Math.random()-0.5;
+}));
+}
+</script>
+
 <body onload="hideAll()">
   <div class="gestureSquares" style="height: 100vh">
     <div class="gestureSquaresRow">
@@ -271,7 +281,7 @@ function hideAll() {
     <div class="Header">
       <h1 style="text-align:center">Which emoji was it?<h1>
       </div>
-
+        <div class="showEmojisRows">
       <div class="showEmojisRow">
         <div class="showEmojisColumn">
           <img onclick="choseLike()" src="images/like.png" alt="like" style="width:100%;max-height:40vh;">
@@ -294,6 +304,7 @@ function hideAll() {
           <img onclick="choseWow()" src="images/wow.png" alt="like" style="width:100%;max-height:40vh;">
         </div>
       </div>
+    </div>
     </div>
     <table id="numberedVibrationsTable">
       <tr>
