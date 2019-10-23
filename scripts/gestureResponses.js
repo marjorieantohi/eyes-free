@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(e.type);
 
     // vibrate as confirmation
-    navigator.vibrate(500);
+    //navigator.vibrate(500);
     console.log('vibrate done')
 
     // display result
