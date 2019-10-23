@@ -25,6 +25,13 @@ body {
   transition: transform 300ms ease-out;
 }
 
+.p {
+  width: 90px;
+  height: 90px;
+  text-align: center;
+  line-height: 45px;
+}
+
 .expand {
   transform: scale(2.5);
 }
