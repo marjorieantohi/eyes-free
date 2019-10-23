@@ -45,18 +45,18 @@
   }
 
   function hideEmojiClass() {
-    globalTime = new Date().getTime() - start;
+    globalTime = new Date().getTime() - startTime;
     document.getElementsByClassName('showEmojis')[0].style.visibility = 'hidden';
   }
 
   function showEmojiClass() {
-    start = new Date().getTime();
+    startTime = new Date().getTime();
     document.getElementsByClassName('showEmojis')[0].style.visibility = '';
   }
 
   function gestureSpace() {
     hideGestureClass();
-    showGestureSquaresClass();
+    //showGestureSquaresClass();
 
   }
 
@@ -274,7 +274,7 @@
       </div>
     </div>
   </div>
-  <table id="numberedVibrationsTable">
+  <table id="emoVibesTable">
     <tr>
       <th>Participant</th>
       <th>Emoji Shown</th>
