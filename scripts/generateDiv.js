@@ -1,3 +1,5 @@
+// This file generates all the tables in the test.
+
 // Put in 1 for emojis, 0 for blank
 function generateDiv(number) {
   for (var i = 0; i < globalEmojis.length; i++) {

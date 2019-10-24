@@ -1,3 +1,5 @@
+// This file has functions that turns the html table into a csv and mails it to us.
+
 function download_csv(csv, filename) {
     var csvFile;
     var downloadLink;
