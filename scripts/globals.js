@@ -1,3 +1,5 @@
+var globalEmojis = ['like', 'love', 'haha', 'wow', 'sad', 'angry'];
+
 // Globals to add the data later
 var globalName = "";
 var globalEmojiShown = "";

@@ -12,35 +12,13 @@
   <script src="scripts/csv.js"></script>
   <script src="scripts/emojiChoosing.js"></script>
   <script src="scripts/separation.js"></script>
+  <script src="scripts/generateDiv.js"></script>
 </head>
 
-<body onload="hideAll()">
-  <div class="gestureSquares" style="height: 100vh">
-    <div class="gestureSquaresRow">
-      <div class="gestureSquaresColumn">
-        <img onclick="choseGesture('like')" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
-      </div>
-      <div class="gestureSquaresColumn">
-        <img onclick="choseGesture('love')" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
-      </div>
-    </div>
-    <div class="gestureSquaresRow">
-      <div class="gestureSquaresColumn">
-        <img onclick="choseGesture('haha')" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
-      </div>
-      <div class="gestureSquaresColumn">
-        <img onclick="choseGesture('wow')" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
-      </div>
-    </div>
-    <div class="gestureSquaresRow">
-      <div class="gestureSquaresColumn">
-        <img onclick="choseGesture('sad')" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
-      </div>
-      <div class="gestureSquaresColumn">
-        <img onclick="choseGesture('angry')" src="images/blank.png" alt="like" style="width:50vw;height:33.3vh">
-      </div>
-    </div>
+<body onload="start()">
+  <div class="gestureSquares" onload="generateDiv(0)" style="height: 100vh">
   </div>
+  
   <div class="beginVibration">
       <button onclick="playRandomPattern()" class="button">Receive Message!</button>
   </div>
@@ -57,25 +35,7 @@
     <div class="Header">
       <h1 style="text-align:center">Which emoji was it?<h1>
       </div>
-        <div class="showEmojisRows">
-        <div class="showEmojisColumn">
-          <img onclick="chose('like')" src="images/like.png" alt="like" style="width:100%;height:20vh;">
-        </div>
-        <div class="showEmojisColumn">
-          <img onclick="chose('love')" src="images/heart.png" alt="like" style="width:100%;height:20vh;">
-        </div>
-        <div class="showEmojisColumn">
-          <img onclick="chose('haha')" src="images/haha.png" alt="like" style="width:100%;height:20vh;">
-        </div>
-        <div class="showEmojisColumn">
-          <img onclick="chose('sad')" src="images/sad.png" alt="like" style="width:100%;height:20vh;">
-        </div>
-        <div class="showEmojisColumn">
-          <img onclick="chose('angry')" src="images/angry.png" alt="like" style="width:100%;height:20vh;">
-        </div>
-        <div class="showEmojisColumn">
-          <img onclick="chose('wow')" src="images/wow.png" alt="like" style="width:100%;height:20vh;">
-        </div>
+        <div class="showEmojisRows" onload="generateDiv(1)">
     </div>
     </div>
     <table id="numberedVibrationsTable">
