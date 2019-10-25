@@ -32,8 +32,13 @@ body {
   line-height: 45px;
 }
 
-.expand {
-  transform: scale(2.5);
+.gestureBoard {
+  width: 50vw;
+  height: 50vw;
+  position: fixed;
+  top: 75%;
+  left: 25%;
+  background-color: #689F38;
 }
 
 .showEmojis {

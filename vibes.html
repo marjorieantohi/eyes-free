@@ -1,289 +1,56 @@
 <!DOCTYPE html>
 <html>
 
-<!-- <script src="https://hammerjs.github.io/dist/hammer.js"></script> -->
-
 <head>
   <link rel="stylesheet" href="style.css">
+  <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="scripts/globals.js"></script>
   <script src="scripts/emoVibes.js"></script>
   <script src="scripts/random.js"></script>
+  <script src="scripts/csv.js"></script>
+  <script src="scripts/emojiChoosing.js"></script>
   <script src="scripts/separation.js"></script>
+  <script src="scripts/generateDiv.js"></script>
+  <script src="scripts/gestureResponses.js"></script>
 </head>
 
-<script type="text/javascript">
+<body onload="start('emo')">
+  <div class="gestureSquares" onload="generateDiv(0)" style="height: 100vh">
+  </div>
 
-  // Globals to add the data later
-  var globalName = "Test";
-  var globalEmojiShown = "Test";
-  var globalEmojiChosen = "Test";
-  var globalTime = 0;
-  var counter = 1;
-
-  // Globals to keep track of time
-  var startTime;
-
-  // Adds a row to the table.
-  function addRow(name, emojiShown, emojiChosen, totalTime) {
-
-    // Get our table
-    var table = document.getElementById("emoVibesTable");
-
-    // Make our row
-    var row = table.insertRow(-1);
-
-    // Make our cells
-    var nameCell = row.insertCell(0);
-    var emojiShownCell = row.insertCell(1);
-    var emojiChosenCell = row.insertCell(2);
-    var totalTimeCell = row.insertCell(3);
-
-    // Assign the values
-    nameCell.innerHTML = name;
-    emojiShownCell.innerHTML = emojiShown;
-    emojiChosenCell.innerHTML = emojiChosen;
-    totalTimeCell.innerHTML = totalTime;
-  }
-
-  function hideEmojiClass() {
-    globalTime = new Date().getTime() - startTime;
-    document.getElementsByClassName('showEmojis')[0].style.visibility = 'hidden';
-  }
-
-  function showEmojiClass() {
-    startTime = new Date().getTime();
-    document.getElementsByClassName('showEmojis')[0].style.visibility = '';
-  }
-
-  function gestureSpace() {
-    hideGestureClass();
-    //showGestureSquaresClass();
-
-  }
-
-  function hideVibrationClass() {
-    document.getElementsByClassName('beginVibration')[0].style.visibility = 'hidden';
-  }
-
-  function showVibrationClass() {
-    document.getElementsByClassName('beginVibration')[0].style.visibility = '';
-  }
-
-  function playRandomPattern() {
-
-    // Hide the button to play a vibration
-    hideVibrationClass();
-
-    // Used to choose a random pattern
-    var randomNumber = getRandomInt(0, 6);
-
-    // Used to calculate when to show emojis
-    var timeTillDone;
-
-    // Choose the pattern, note which pattern was played
-    switch(randomNumber) {
-      case 0:
-        emotionalAngryEmoji();
-        globalEmojiShown = "angry";
-        timeTillDone = 2300;
-        break;
-      case 1:
-        emotionalSadEmoji();
-        globalEmojiShown = "sad";
-        timeTillDone = 1500;
-        break;
-      case 2:
-        emotionalLikeEmoji();
-        globalEmojiShown = "like";
-        timeTillDone = 250;
-        break;
-      case 3:
-        emotionalHahaEmoji();
-        globalEmojiShown = "haha";
-        timeTillDone = 2000;
-        break;
-      case 4:
-        emotionalHeartEmoji();
-        globalEmojiShown = "love";
-        timeTillDone = 900;
-        break;
-      case 5:
-        emotionalWowEmoji();
-        globalEmojiShown = "wow";
-        timeTillDone = 1000;
-        break;
-    }
-    setTimeout(showEmojiClass,timeTillDone + 250);
-  }
-
-  function choseLike() {
-    globalEmojiChosen = "like";
-    addRowContainer();
-  }
-
-  function choseHaha() {
-    globalEmojiChosen = "haha";
-    addRowContainer();
-  }
-
-  function choseHeart() {
-    globalEmojiChosen = "love";
-    addRowContainer();
-  }
-
-  function choseWow() {
-    globalEmojiChosen = "wow";
-    addRowContainer();
-  }
-
-  function choseSad() {
-    globalEmojiChosen = "sad";
-    addRowContainer();
-  }
-
-  function choseAngry() {
-    globalEmojiChosen = "angry";
-    addRowContainer();
-  }
-
-  function choseLike() {
-    globalEmojiChosen = "like";
-    addRowContainer();
-  }
-
-  function choseHaha() {
-    globalEmojiChosen = "haha";
-    addRowContainer();
-  }
-
-  function choseHeart() {
-    globalEmojiChosen = "love";
-    addRowContainer();
-  }
-
-  function choseWow() {
-    globalEmojiChosen = "wow";
-    addRowContainer();
-  }
-
-  function choseSad() {
-    globalEmojiChosen = "sad";
-    addRowContainer();
-  }
-
-  function choseAngry() {
-    globalEmojiChosen = "angry";
-    addRowContainer();
-  }
-
-  function addRowContainer() {
-    hideEmojiClass();
-    if (counter % 2 == 0) {
-      globalName = "SENT";
-      showVibrationClass();
-    } else {
-      globalName = "RECEIVED";
-      showGestureClass();
-    }
-    addRow(globalName, globalEmojiShown, globalEmojiChosen, globalTime);
-    counter++;
-  }
-
- function choseGestureLike() {
-    globalEmojiShown = "like";
-    hideGestureSquaresClass();
-    setTimeout(showEmojiClass,250);
-  }
-
-  function choseGestureHaha() {
-    globalEmojiShown = "haha";
-    hideGestureSquaresClass();
-    setTimeout(showEmojiClass,250);
-  }
-
-  function choseGestureHeart() {
-    globalEmojiShown = "love";
-    hideGestureSquaresClass();
-    setTimeout(showEmojiClass,250);
-  }
-
-  function choseGestureWow() {
-    globalEmojiShown = "wow";
-    hideGestureSquaresClass();
-    setTimeout(showEmojiClass,250);
-  }
-
-  function choseGestureSad() {
-    globalEmojiShown = "sad";
-    hideGestureSquaresClass();
-    setTimeout(showEmojiClass,250);
-  }
-
-  function choseGestureAngry() {
-    globalEmojiShown = "angry";
-    hideGestureSquaresClass();
-    setTimeout(showEmojiClass,250);
-  }
-
-  function hideAll() {
-    hideEmojiClass();
-    hideGestureClass();
-    hideGestureSquaresClass();
-  }
-
-
-
-
-</script>
-
-<body onload="hideAll()">
   <div class="beginVibration">
-    <div class="center-center">
-     <button onclick="playRandomPattern()" class="button">Receive Message!</button>
-    </div>
+    <button onclick="playRandomPattern()" class="button">Receive Message!</button>
+  </div>
+
+  <div class="exportCsv">
+    <button onclick="exportToCsv()" class="button">Finish!</button>
   </div>
 
   <div class="beginGesture">
-    <div class="center-center">
-     <button onclick="gestureSpace()" class="button">Send Message!</button>
-    </div>
+    <button onclick="emoGestureSpace()" class="button">Send Message!</button>
   </div>
+
+  <div class="gestureBoard">
+  </div>
+  <div class="p"></div>
+  <script>gesture('.gestureBoard', 'False')</script>
 
   <div class="showEmojis">
     <div class="Header">
-        <h1 style="text-align:center">Which emoji was it?<h1>
-    </div>
-
-    <div class="showEmojisRow">
-      <div class="showEmojisColumn">
-        <img onclick="choseLike()" src="images/like.png" alt="like" style="width:100%;max-height:40vh;">
+      <h1 style="text-align:center">Which emoji did you send or receive?<h1>
       </div>
-      <div class="showEmojisColumn">
-        <img onclick="choseHeart()" src="images/heart.png" alt="like" style="width:100%;max-height:40vh;">
-      </div>
-      <div class="showEmojisColumn">
-        <img onclick="choseHaha()" src="images/haha.png" alt="like" style="width:100%;max-height:40vh;">
+      <div class="showEmojisRows" onload="generateDiv(1)">
       </div>
     </div>
-    <div class="showEmojisRow">
-      <div class="showEmojisColumn">
-        <img onclick="choseSad()" src="images/sad.png" alt="like" style="width:100%;max-height:40vh;">
-      </div>
-      <div class="showEmojisColumn">
-        <img onclick="choseAngry()" src="images/angry.png" alt="like" style="width:100%;max-height:40vh;">
-      </div>
-      <div class="showEmojisColumn">
-        <img onclick="choseWow()" src="images/wow.png" alt="like" style="width:100%;max-height:40vh;">
-      </div>
-    </div>
-  </div>
-  <table id="emoVibesTable">
-    <tr>
-      <th>R/S</th>
-      <th>Emoji Shown</th>
-      <th>Emoji Chosen</th>
-      <th>Time to Send</th>
-    </tr>
-  </table>
-</body>
+    <table id="numberedVibrationsTable">
+      <tr>
+        <th>R/S</th>
+        <th>Emoji Shown</th>
+        <th>Emoji Chosen</th>
+        <th>Time to Send</th>
+      </tr>
+    </table>
+  </body>
 
 </html>

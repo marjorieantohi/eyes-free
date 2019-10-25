@@ -13,3 +13,10 @@ function choseGesture(emoji) {
   hideClass('gestureSquares');
   setTimeout(showClass,250, 'showEmojis');
 }
+
+function choseEmoGesture(emoji) {
+  likeEmoji();
+  globalEmojiShown = emoji;
+  hideClass('gestureBoard');
+  setTimeout(showClass,250, 'showEmojis');
+}

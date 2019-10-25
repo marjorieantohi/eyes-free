@@ -31,8 +31,8 @@ function createBlankElement(emoji1, emoji2) {
   $(elm).appendTo(".gestureSquares");
 }
 
-function start() {
+function start(test) {
   generateDiv(0);
   generateDiv(1);
-  hideAll();
+  hideAll(test);
 }

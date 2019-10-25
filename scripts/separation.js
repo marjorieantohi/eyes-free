@@ -19,10 +19,16 @@ function showClass(className) {
 }
 
 // Hide all the classes except for hideVibration. This is used at the beginning.
-function hideAll() {
+function hideAll(test) {
+
+  if (test === 'emo') {
+    hideClass('gestureBoard');
+  } else if (test === 'num') {
+    hideClass('gestureSquares');
+  }
+
   hideClass('showEmojis');
   hideClass('beginGesture');
-  hideClass('gestureSquares');
   hideClass('exportCsv');
 }
 
@@ -30,4 +36,9 @@ function hideAll() {
 function gestureSpace() {
   hideClass('beginGesture');
   showClass('gestureSquares');
+}
+
+function emoGestureSpace() {
+  hideClass('beginGesture');
+  showClass('gestureBoard');
 }
