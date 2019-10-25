@@ -73,8 +73,7 @@ function addRowContainer() {
     addRow(globalName, globalEmojiShown, globalEmojiChosen, globalTime);
     counter++;
   } else {
-    hideAll();
     hideClass('beginVibration');
-    showClass('exportToCsv');
+    showClass('exportCsv');
   }
 }
